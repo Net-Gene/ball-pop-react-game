@@ -38,11 +38,17 @@ const Points = styled.div`
   text-align: center;
   margin-right: 10px;
 `
-
-function Ball() {
+interface BallProps {
+  maxCount: number,
+  x: number,
+  y: number
+}
+function Ball({maxCount, x, y}:BallProps) {
 
   const [clicked, setClicked] = useState(0)
 
+/*   const maxCount = randomInterger(1, 10)
+ */
   const style: CSSProperties = {
 
     background: "red",
@@ -52,20 +58,46 @@ function Ball() {
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "50%",
-    position: "absolute",
+   /*  position: "absolute", */
     userSelect: "none",
-    cursor: "pointer"
+    cursor: "pointer",
+    transform: `translate(${x}px,${y}px)`
+
+  }
+
+  if(clicked >= maxCount){
+    return <div style={style}>
+      x
+    </div>
 
   }
 
   return <>
 
-    <div style={style} onClick={()=> setClicked(clicked+1)}> {clicked}</div>
+    <div style={style} onClick={()=> setClicked(clicked+1)}> 
+      {clicked} / {maxCount}
+      </div>
+    
   </>
 }
+
+function randomIntFromInterval(min: number, max: number) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 export default function App() {
 
-  return (
+  const allBalls = Array(20).fill(null).map((_,i)=>{
+    return <Ball 
+    key = {i}
+    maxCount={randomIntFromInterval(1, 5)} 
+    x={randomIntFromInterval(1,window.innerWidth)} 
+    y={randomIntFromInterval(1, window.innerHeight)}>
+      
+    </Ball>
+
+  })
+    return (
       <Layout>
         
         <Title>
@@ -78,7 +110,7 @@ export default function App() {
           </Home>
           <Points>Points</Points>
         </Navigation>
-        <Ball></Ball>
+        {allBalls}
         
       </Layout>
   )
