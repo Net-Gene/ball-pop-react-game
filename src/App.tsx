@@ -1,3 +1,4 @@
+import { CSSProperties, useState } from "react";
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -36,24 +37,48 @@ const Points = styled.div`
   background-color: #ffffff;
   text-align: center;
   margin-right: 10px;
-
-
 `
+
+function Ball() {
+
+  const [clicked, setClicked] = useState(0)
+
+  const style: CSSProperties = {
+
+    background: "red",
+    width: 50 + "px",
+    height: 50 + "px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    position: "absolute",
+    userSelect: "none",
+    cursor: "pointer"
+
+  }
+
+  return <>
+
+    <div style={style} onClick={()=> setClicked(clicked+1)}> {clicked}</div>
+  </>
+}
 export default function App() {
 
   return (
       <Layout>
         
         <Title>
-            Luento 3 + React
+            Ball Gaming; The Game
         </Title>
         
         <Navigation>
           <Home>
-          Home
+            Home
           </Home>
           <Points>Points</Points>
         </Navigation>
+        <Ball></Ball>
         
       </Layout>
   )
