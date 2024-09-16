@@ -13,25 +13,30 @@ const Layout = styled.div`
 `
 
 const Navigation = styled.div`
-  color: #e85a5a;
-  width: 100%;
-  width: 80px;
+  background-color: lightblue;
+
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 50%;
+  height: 70px;
+  
 
 `
 
 const Home = styled.button`
-  color: lightcyan;
-
+  color: #000000;
+  border-radius: 50%;
+  width: 100%;
+  width: 50px;
+  margin-left: 10px;
 `
 const Points = styled.div`
   width: 50px;
   height: 50px;
-  background-color: red;
+  background-color: #ffffff;
+  text-align: center;
   margin-right: 10px;
+
 
 `
 export default function App() {
@@ -42,14 +47,14 @@ export default function App() {
         <Title>
             Luento 3 + React
         </Title>
-        <Home>
-
+        
         <Navigation>
-          
-
+          <Home>
+          Home
+          </Home>
+          <Points>Points</Points>
         </Navigation>
-        <Points></Points>
-        </Home>
+        
       </Layout>
   )
 }
