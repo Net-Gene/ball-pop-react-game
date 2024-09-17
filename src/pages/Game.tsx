@@ -36,7 +36,6 @@ function Ball({maxCount, x, y}:BallProps) {
 
   return <>
 
-    // clickaus lisää yhden numeron lisää esim. pallo objektiin
     <div style={style} onClick={()=> setClicked(clicked+1)}> 
       {clicked} / {maxCount}
       </div>
