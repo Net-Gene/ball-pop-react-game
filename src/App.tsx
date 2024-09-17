@@ -1,11 +1,9 @@
 import { CSSProperties, useState } from "react";
 import styled from "styled-components";
+import { addPointsToDb } from "./services/supabase_client";
 
-const Title = styled.h1`
-  font-size: 30px;
-  text-align: center;
-  color: #ffffff;
-`
+
+
 
 const Layout = styled.div`
   background: #000000;
@@ -35,6 +33,7 @@ const Points = styled.div`
   width: 50px;
   height: 50px;
   background-color: #ffffff;
+  display: flex;
   text-align: center;
   margin-right: 10px;
 `
@@ -46,9 +45,7 @@ interface BallProps {
 function Ball({maxCount, x, y}:BallProps) {
 
   const [clicked, setClicked] = useState(0)
-
-/*   const maxCount = randomInterger(1, 10)
- */
+ 
   const style: CSSProperties = {
 
     background: "red",
@@ -58,7 +55,6 @@ function Ball({maxCount, x, y}:BallProps) {
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "50%",
-   /*  position: "absolute", */
     userSelect: "none",
     cursor: "pointer",
     transform: `translate(${x}px,${y}px)`
@@ -66,6 +62,8 @@ function Ball({maxCount, x, y}:BallProps) {
   }
 
   if(clicked >= maxCount){
+    // style={style} pystyy pitämään räjähtyneen pallon samassa kohdassa
+    // kun pallon alkuperäisen paikan
     return <div style={style}>
       x
     </div>
@@ -74,6 +72,7 @@ function Ball({maxCount, x, y}:BallProps) {
 
   return <>
 
+    // clickaus lisää yhden numeron lisää esim. pallo objektiin
     <div style={style} onClick={()=> setClicked(clicked+1)}> 
       {clicked} / {maxCount}
       </div>
@@ -81,12 +80,18 @@ function Ball({maxCount, x, y}:BallProps) {
   </>
 }
 
+//Random numero generator, valitse minimi numero ja maksimi numero 
 function randomIntFromInterval(min: number, max: number) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export default function App() {
 
+//@ts-ignore
+export function Game() {
+
+  //Tekee palloja 20 arrays:ä, joissa on random; 
+  //max clickaus määrä
+  //x ja y paikka, eli sijainti sivulla  
   const allBalls = Array(20).fill(null).map((_,i)=>{
     return <Ball 
     key = {i}
@@ -100,9 +105,6 @@ export default function App() {
     return (
       <Layout>
         
-        <Title>
-            Ball Gaming; The Game
-        </Title>
         
         <Navigation>
           <Home>
@@ -116,3 +118,22 @@ export default function App() {
   )
 }
 
+
+// Default näkymä tällä hetkellä
+export default function App() {
+
+  const [nickname, setNickname] = useState("")
+  
+
+  return <Layout>
+  
+
+    <Navigation>
+      <Home>Koti</Home>
+    </Navigation>
+    <input value={nickname} onChange={(e)=> setNickname(e.target.value)}></input>
+    <button onClick={()=> addPointsToDb(nickname, 0)}>Testaa supbase</button>
+    Nimimerkki: {nickname}
+
+  </Layout>
+}
