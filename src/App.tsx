@@ -18,7 +18,7 @@ export default function App() {
     </Navigation>
 
     <input value={nickname} onChange={(e)=> setNickname(e.target.value)}></input>
-    <button onClick={()=> addPointsToDb(nickname, 0)}>Testaa supbase</button>
+    <button onClick={()=> addPointsToDb(nickname, 100)}>Testaa supbase</button>
     
     Nimimerkki: {nickname}
 

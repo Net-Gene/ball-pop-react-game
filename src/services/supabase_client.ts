@@ -29,6 +29,10 @@ export async function addPointsToDb(nickname : string, points : number){
 
     // jos koodi toimii, data tulee konsoliin
     console.log(data)
+
+    // Käyttäjäkokemuksen parantamisen lisäys 2; 
+    // Alert ilmoitus jos käyttäjätunnuksen lisääminen onnistuu supbase:en
+    alert("Käyttäjätunnus on lisätty onnistuneesti supbase:en!")
     return data.at(0)
 
   }
