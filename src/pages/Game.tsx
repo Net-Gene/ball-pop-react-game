@@ -1,6 +1,12 @@
 import { useState, CSSProperties, useEffect } from "react"
 import { Home, Layout, Navigation, Points } from "../components/common"
 
+// 2. tehtävä; Tuo uusi kirjasto koodiin ja käytä sen toimintoja
+// Valitsin toteutukseen animaatio kirjaston nimeltä framer-motion, 
+// jossa toteutan animaation, kun pallo räjähtää.
+// Tässä dokumentationi framer-motion kirjastoon; https://www.framer.com/motion/
+import { motion } from "framer-motion"; 
+
 
 interface BallProps {
   maxCount: number,
@@ -19,6 +25,16 @@ function Ball({maxCount, x, y, setCount}:BallProps) {
 
   const [clicked, setClicked] = useState(0)
   
+  // Tila räjähtämiselle
+  const [isExploded, setIsExploded] = useState(false); 
+
+
+  // Animaatiot, kun pallo räjähtää
+  const explodeAnimation = {
+    initial: { scale: 1, opacity: 1 }, // Alkuperäinen koko
+    animate: { scale: 2, opacity: 0 }, // Räjähtämisen aikana kasvaa ja häipyy
+  };
+
   // Käyttäjäkokemuksen parantamisen lisäys 4.;
   // Tallennetaan pallon x ja y arvot tilaan ensimmäisen renderöinnin yhteydessä
   // Tämä estää pallojen pomppimista pois, kun niitä klikkaa.
@@ -40,28 +56,28 @@ function Ball({maxCount, x, y, setCount}:BallProps) {
 
   }
 
-  if(clicked >= maxCount){
-    // Käyttäjäkokemuksen parantamisen lisäys 1.;
-    // Jos pallo on klikattu maksimimäärään, näytetään "x",
-    // joka edustaa räjähtynyttä palloa. Pallon sijainti pysyy ennallaan.
-
-    return <div style={style}>
-      x
-    </div>
-
+  // Jos pallo on klikattu maksimimäärän, aseta räjähtämistila päälle
+  if (clicked >= maxCount && !isExploded) {
+    setIsExploded(true); // Muutetaan räjähtämistila trueksi
   }
 
-  return <>
-
-    <div style={style} onClick={()=> {
-      setClicked(clicked+1)
-      // Käytämme setCount funktiota 1 pisteen lisäämiseksi count variableen, kun käyttäjä klikkaa palloa
-      setCount(1)
-    }}> 
-      {clicked} / {maxCount}
-      </div>
-    
-  </>
+  return (
+    <motion.div
+      style={style}
+      onClick={() => {
+        if (!isExploded) { 
+          // Vain jos pallo ei ole räjähtänyt
+          setClicked(clicked + 1);
+          setCount(1);
+        }
+      }}
+      initial={isExploded ? "initial" : undefined}
+      animate={isExploded ? "animate" : undefined}
+      variants={isExploded ? explodeAnimation : undefined}
+    >
+      {isExploded ? "x" : `${clicked} / ${maxCount}`}
+    </motion.div>
+  );
 }
 
 // Luo jokaiselle pallolle satunnainen max klikkausmäärä sekä x- ja y-sijainti,
