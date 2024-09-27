@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# Pallo Peli
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tämä projekti on yksinkertainen React-pohjainen peli, jossa käyttäjä klikkaa palloa kerätäkseen pisteitä. Animaatiot on toteutettu Framer Motion -kirjastolla. Projekti on rakennettu käyttämällä **React**, **TypeScript** ja **Vite**.
 
-Currently, two official plugins are available:
+## Riippuvuudet
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Ohjelmistot
 
-## Expanding the ESLint configuration
+- [Node.js](https://nodejs.org/) - Vähintään versio 14.0.0
+- [npm](https://www.npmjs.com/) - Node.js: n mukana asennettu pakettienhallinta
+- [Visual Studio](https://visualstudio.microsoft.com/) - Kehitysympäristö projektin kehittämiseen.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### NPM-Paketit
 
-- Configure the top-level `parserOptions` property like this:
+Tämä projekti käyttää seuraavia NPM-paketteja:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- `react` - React-kirjasto käyttöliittymän rakentamiseen.
+- `react-dom` - Reactin DOM-rajapinta.
+- `framer-motion` - Animaatiokirjasto Reactille.
+- `typescript` - Tyypitetty JavaScript-kieli, jota käytetään projektissa.
+- `vite` - Nopean kehityksen ja rakennuksen työkalu.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Käyttöönotto
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. **Kloonaa projekti**:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   git clone https://github.com/kayttajanimi/pallo-peli.git
+   cd pallo-peli
+   
+2. **Asenna riippuvuudet**:
+
+Asenna tarvittavat NPM-paketit projektin juurihakemistossa:
+
+  npm install
+  
+3. **Käynnistä kehityspalvelin**:
+
+Käynnistä kehityspalvelin, jotta voit testata sovellusta:
+
+  npm run dev
+
+4. **Avaa selain**:
+
+Siirry selaimessa osoitteeseen http://localhost:3000 (tai portti, joka tulostuu konsoliin), niin näet sovelluksen toiminnassa.
+
+## Käyttöohjeet
+
+Klikkaa punaista palloa kerätäksesi pisteitä.
+Kun pallo on klikattu maksimimäärän, se räjähtää ja sen tilalle ilmestyy "x".
+
+## Lisätiedot
+
+Jos haluat lisätietoja Framer Motion -kirjastosta, voit tutustua sen dokumentaatioon.
+
+
+
+
+
