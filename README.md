@@ -1,59 +1,70 @@
-# Pallo Peli
+# Exploding Balls Game 🎈💥
 
-Tämä projekti on yksinkertainen React-pohjainen peli, jossa käyttäjä klikkaa palloa kerätäkseen pisteitä. Animaatiot on toteutettu Framer Motion -kirjastolla. Projekti on rakennettu käyttämällä **React**, **TypeScript** ja **Vite**.
+This project is a simple interactive game built with **React**, **TypeScript**, and **Framer Motion**, designed to practice UI development, animations, and state handling in a fun and visual way.
 
-## Riippuvuudet
+## 🔍 Overview
 
-### Ohjelmistot
+- Red balls appear randomly on screen.
+- Each ball has a random click limit (1–5).
+- When clicked the max number of times, the ball **explodes** with an animation.
+- A **score counter** tracks your successful clicks.
+- All animations are powered by **Framer Motion**.
 
-- [Node.js](https://nodejs.org/) - Vähintään versio 14.0.0
-- [npm](https://www.npmjs.com/) - Node.js: n mukana asennettu pakettienhallinta
-- [Visual Studio](https://visualstudio.microsoft.com/) - Kehitysympäristö projektin kehittämiseen.
+## 🛠️ Tech Stack
 
-### NPM-Paketit
+- **React** – UI library  
+- **TypeScript** – Typed JavaScript  
+- **Framer Motion** – Animation library  
+- **Vite** – Development/build tool  
 
-Tämä projekti käyttää seuraavia NPM-paketteja:
+## 📦 Dependencies
 
-- `react` - React-kirjasto käyttöliittymän rakentamiseen.
-- `react-dom` - Reactin DOM-rajapinta.
-- `framer-motion` - Animaatiokirjasto Reactille.
-- `typescript` - Tyypitetty JavaScript-kieli, jota käytetään projektissa.
-- `vite` - Nopean kehityksen ja rakennuksen työkalu.
+```bash
+npm install
+```
 
-### Käyttöönotto
+- `react`  
+- `react-dom`  
+- `framer-motion`  
+- `typescript`  
+- `vite`
 
-1. **Kloonaa projekti**:
+## 🚀 Getting Started
 
-   ```bash
-   git clone https://github.com/kayttajanimi/pallo-peli.git
-   cd pallo-peli
-   
-2. **Asenna riippuvuudet**:
+1. **Clone the repository**
 
-Asenna tarvittavat NPM-paketit projektin juurihakemistossa:
+```bash
+git clone https://github.com/your-username/exploding-balls-game.git
+cd exploding-balls-game
+```
 
-  npm install
-  
-3. **Käynnistä kehityspalvelin**:
+2. **Install dependencies**
 
-Käynnistä kehityspalvelin, jotta voit testata sovellusta:
+```bash
+npm install
+```
 
-  npm run dev
+3. **Run development server**
 
-4. **Avaa selain**:
+```bash
+npm run dev
+```
 
-Siirry selaimessa osoitteeseen http://localhost:3000 (tai portti, joka tulostuu konsoliin), niin näet sovelluksen toiminnassa.
+4. **Open in browser**
 
-## Käyttöohjeet
+Go to [http://localhost:3000](http://localhost:3000) (or the port shown in the console).
 
-Klikkaa punaista palloa kerätäksesi pisteitä.
-Kun pallo on klikattu maksimimäärän, se räjähtää ja sen tilalle ilmestyy "x".
+## 🎮 How to Play
 
-## Lisätiedot
+- Click on red balls to earn points.
+- Each ball shows its current click count.
+- When a ball reaches its limit, it explodes and disappears.
+- Your total score is shown in the top-right corner.
 
-Jos haluat lisätietoja Framer Motion -kirjastosta, voit tutustua sen dokumentaatioon.
+## 📚 Learn More
 
+- [Framer Motion Documentation](https://www.framer.com/motion/)
 
+---
 
-
-
+Created as part of a **practice project** to learn animation, state management, and component interaction in modern React.
